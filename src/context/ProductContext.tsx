@@ -5,7 +5,6 @@ import { searchProducts } from '../api/products';
 interface ProductContextType {
   products: ProductWithDiscount[];
   setProducts: React.Dispatch<React.SetStateAction<ProductWithDiscount[]>>;
-  loading: boolean;
   searchResults: Product[];
   searchTerm: string;
   setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
@@ -34,7 +33,6 @@ export const useProductContext = () => {
 
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [products, setProducts] = useState<ProductWithDiscount[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
@@ -207,7 +205,6 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
   const value = {
     products,
     setProducts,
-    loading,
     searchResults,
     searchTerm,
     setSearchTerm,
